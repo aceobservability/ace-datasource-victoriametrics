@@ -24,7 +24,6 @@ type Client struct {
 }
 
 // New constructs a VictoriaMetrics datasource client.
-// httpClient is required so Ace can inject DatasourceClient (dial/redirect policy + auth).
 func New(baseURL string, httpClient *http.Client) (*Client, error) {
 	if httpClient == nil {
 		return nil, fmt.Errorf("http client is required")
@@ -39,7 +38,7 @@ func New(baseURL string, httpClient *http.Client) (*Client, error) {
 	}, nil
 }
 
-// HTTPClient returns the injected HTTP client. Ace SSRF tests inspect policy wiring.
+// HTTPClient returns the injected HTTP client.
 func (c *Client) HTTPClient() *http.Client {
 	return c.httpClient
 }
