@@ -10,8 +10,6 @@ import (
 	"strings"
 )
 
-// promqlMetadata is the PromQL labels/values/metric-names API used by
-// VictoriaMetrics. Paths are /api/v1/labels and /api/v1/label/{}/values.
 type promqlMetadata struct {
 	baseURL string
 	client  *http.Client
